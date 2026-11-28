@@ -168,12 +168,12 @@ Be friendly, educational and easy to understand.
     }
 
     return res.status(200).json({ reply });
+} catch (error) {
+  console.error("Chat API error:", error);
 
-  } catch (error) {
-    console.error("Chat API error:", error);
-
-    return res.status(500).json({
-      error: "Unable to generate an answer. Please try again."
-    });
+  return res.status(500).json({
+    error: error.message || "Unable to generate an answer. Please try again."
+  });
   }
+  
 }
